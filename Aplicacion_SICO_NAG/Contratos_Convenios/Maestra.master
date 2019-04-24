@@ -58,7 +58,8 @@
                                     <a href="/Default.aspx" style="font-size: 20px"><i class=" material-icons">home</i>Inicio</a></li>
                                 <li><a href="/Views/Registro_Contratos.aspx" style="font-size: 20px"><i class=" material-icons">list</i>Registro de Contratos</a></li>
                                 <li><a href="/Views/Registro_Convenios.aspx" style="font-size: 20px"><i class=" material-icons">school</i>Registro de Convenios</a></li>
-                               <%-- <li><a href="/Views/Consultas.aspx" style="font-size: 20px"><i class=" material-icons">school</i>Consultas</a></li>--%>
+                                <li><a href="/Views/Default2.aspx" style="font-size: 20px"><i class=" material-icons">school</i>PRUEBAA</a></li>
+                                <%-- <li><a href="/Views/Consultas.aspx" style="font-size: 20px"><i class=" material-icons">school</i>Consultas</a></li>--%>
                                 <%--<li><a href="#" style="font-size: 20px"><i class=" material-icons ">domain</i>Sitios</a></li>
                                 <li><a href="#" style="font-size: 20px"><i class="material-icons ">list_alt</i>Calculo de Mora Anual</a></li>
                                 <li><a href="#" style="font-size: 20px"><i class=" material-icons ">domain location_on</i>Mapa Sitios</></li>--%>
