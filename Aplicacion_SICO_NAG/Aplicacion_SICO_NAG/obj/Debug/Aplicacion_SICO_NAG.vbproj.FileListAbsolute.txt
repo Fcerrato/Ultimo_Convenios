@@ -208,3 +208,14 @@ C:\Users\Conatel\Desktop\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplica
 C:\Users\Conatel\Desktop\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.dll
 C:\Users\Conatel\Desktop\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.xml
 C:\Users\Conatel\Desktop\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.pdb
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\bin\Aplicacion_SICO_NAG.dll.config
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\bin\Aplicacion_SICO_NAG.dll
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\bin\Aplicacion_SICO_NAG.pdb
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\bin\Aplicacion_SICO_NAG.xml
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.vbprojAssemblyReference.cache
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.Resources.resources
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.vbproj.GenerateResource.cache
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.vbproj.CoreCompileInputs.cache
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.dll
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.xml
+C:\Users\Alejandro Cerrato\Desktop\conveycontra\conveycontra\Proyecto_final2\Aplicacion_SICO_NAG\Aplicacion_SICO_NAG\obj\Debug\Aplicacion_SICO_NAG.pdb

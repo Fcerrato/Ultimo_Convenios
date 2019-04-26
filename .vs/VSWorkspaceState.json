@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Aplicacion_SICO_NAG",
+    "\\Aplicacion_SICO_NAG\\Aplicacion_SICO_NAG",
+    "\\Aplicacion_SICO_NAG\\Contratos_Convenios"
   ],
+  "SelectedNode": "\\Aplicacion_SICO_NAG\\Aplicacion_SICO_NAG\\Aplicacion_SICO_NAG.vbproj",
   "PreviewInSolutionExplorer": false
 }
