@@ -9,14 +9,15 @@ $(document).ready(function () {
     $(".modal").modal();
     $('input#input_text, textarea#textarea1').characterCounter();
     consultar();
-  
-    $(document).onload( "#datatable", function (e) {
+    //evaluar();
+
+    $(document).on("click","#datatable", function (e) {   
         e.preventDefault();
-        var data = tabla.row($(this).parents("tr")).data();
-        console.log(data);
-        if (data.Esta_Doc == "P1") {
-            document.getElementById('.Subir_final').disabled = false;
-        }
+        var datos = tabla.row($(this).parents("tr")).data();
+            if (datos.Esta_Doc == "P1") {
+                document.getElementById('.Subir_final').classList.add( "disabled");
+            }
+        
     });
    
     //  format: 'yyyy/mmm/dd' ,
@@ -302,12 +303,9 @@ $(document).ready(function () {
                             },
 
                         ],
-                        
-                    });
-
+                       
+                    });       
                     
-                    
-
                 },
                 failure: function (response) {
                     Materialize.toast('ERROR, intente nuevamente.', 4000, 'rounded');
@@ -315,9 +313,7 @@ $(document).ready(function () {
                 error: function (response, xhr) {
                     Materialize.toast('ERROR, intente nuevamente.', 4000, 'rounded');
                 }
-             });
-      
-       
+             });        
 
     };
 
