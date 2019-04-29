@@ -595,7 +595,7 @@ $(document).ready(function () {
             }
 
         })
-    }
+    };
 
     //Funcion para traer el UR Año Anterior
     function alambrico_AñoAnterior() {
