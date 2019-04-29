@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col s6">
-            <div style="padding: 35px; align-content:center" class="card">
+            <div style="padding: 35px; align-content: center" class="card">
                 <div class="row">
                     <div class="left card-title">
                         <b>Contratos</b>
@@ -72,6 +72,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
-
