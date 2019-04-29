@@ -4,21 +4,20 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Convenios y Contratos</title>
-     <link rel="shortcut icon" href="/Images/favicon.ico" />
-    <asp:ContentPlaceHolder id="head" runat="server">
-       
+    <link rel="shortcut icon" href="/Images/favicon.ico" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
-    <link  href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css" rel="stylesheet"/>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.material.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.material.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
-     <link href="Css/Diseño.css" rel="stylesheet" />
-     <%-- Para el menu --%>
+    <link href="Css/Diseño.css" rel="stylesheet" />
+    <%-- Para el menu --%>
     <style>
         body {
             display: flex;
@@ -62,7 +61,6 @@
                                 <%--<li><a href="#" style="font-size: 20px"><i class=" material-icons ">domain</i>Sitios</a></li>
                                 <li><a href="#" style="font-size: 20px"><i class="material-icons ">list_alt</i>Calculo de Mora Anual</a></li>
                                 <li><a href="#" style="font-size: 20px"><i class=" material-icons ">domain location_on</i>Mapa Sitios</></li>--%>
-
                             </ul>
                             <a href="#" class="brand-logo center">
                                 <img src="/Images/logoblanco.png" width="100" height="50" />
@@ -77,24 +75,23 @@
             </div>
         </header>
         <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
-         <footer class="page-footer " style="position: fixed; left: 0; bottom: 0; width: 100%; text-align: center;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer class="page-footer " style="position: fixed; left: 0; bottom: 0; width: 100%; text-align: center;">
             <div class="footer-copyright ">
                 <div class="container ">
                     <div class="container center">© 2019 Copyright</div>
                 </div>
             </div>
         </footer>
-    </form>  
-     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    </form>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.material.min.js"></script>
-   <%-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>--%>
+    <%-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>--%>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
@@ -103,7 +100,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 
-     <%-- Para inicializacion del  sidenav --%>
+    <%-- Para inicializacion del  sidenav --%>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.button-collapse').sideNav({
