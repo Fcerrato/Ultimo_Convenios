@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="/Scripts/Regis_Contrato.js"></script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="contratos">
@@ -35,7 +36,7 @@
                                          </div>
                                  </div>
                             <div class="valign-wrapper ">
-                                 <div class=" input-field col s12 m6 l9" style="margin:initial">
+                              <%--   <div class=" input-field col s12 m6 l9" style="margin:initial">
                                               <i class="material-icons prefix">arrow_drop_down_circle</i>
                                            <select id="est_contra" class="eval" >                                
                                              <option value="" class="disabled selected" >Seleccione</option>
@@ -45,7 +46,7 @@
                                           </select>
                                          <label> Prioridad                     
                                          </label>
-                                    </div> 
+                                    </div> --%>
                                 <textarea id="bina" class="materialize-textarea" data-length="500000000" style="display:none"></textarea>
                                 <input id="id" type="text" style="display:none" />
                             </div>
@@ -88,7 +89,8 @@
                   <table id="datatable" class=" mdl-data-table display nowrap "   style="width:100%"  border: black 5px solid; >
                       <thead>
                          <tr>
-                            <th>Acciones</th>
+                            <th>Actualizar</th>
+                             <th>Archivos</th>
                              <th>Id</th>                                                          
 			                 <th>Titulo del Contrato</th>
                              <th>Tipo de Documento</th>

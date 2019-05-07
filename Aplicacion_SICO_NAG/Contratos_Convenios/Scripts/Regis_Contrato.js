@@ -4,21 +4,14 @@ var base64;
 var datos;
 var tabla;
 var archivo;
+var btn;
+var estado;
 $(document).ready(function () {
     $('select').material_select();
     $(".modal").modal();
     $('input#input_text, textarea#textarea1').characterCounter();
-    consultar();
-    //evaluar();
-
-    $(document).on("click","#datatable", function (e) {   
-        e.preventDefault();
-        var datos = tabla.row($(this).parents("tr")).data();
-            if (datos.Esta_Doc == "P1") {
-                document.getElementById('.Subir_final').classList.add( "disabled");
-            }
-        
-    });
+   
+    consultar();      
    
     //  format: 'yyyy/mmm/dd' ,
     $('#fech_inicio, #fech_final').pickadate({
@@ -47,8 +40,7 @@ $(document).ready(function () {
         var datosContratos = {};
         datosContratos.Nombre = $("[id*=nom_contra]").val();
         datosContratos.Fech_inicio = fecha_inicio;
-        datosContratos.Fech_fin = fecha_final;
-        datosContratos.Esta_Doc = $("[id*=est_contra]").val();       
+        datosContratos.Fech_fin = fecha_final;             
         $(function () {
             $.ajax({
                 type: "POST",
@@ -95,6 +87,35 @@ $(document).ready(function () {
             });
         });
         setTimeout(function () { callback(); }, 500);
+    };
+
+    function guardarbtn(callback) {
+        datos = "<button  title='Subir Archivo Memo' class=' btn waves-effect waves-light Subir_memo red lighten-2 modal-trigger' disabled='true' id='Subir_memo' type='submit'  style='position: Static' href='#modal'><i class='material-icons'>file_upload</i></button>&nbsp;<button  title='Subir Archivo final' class= ' btn waves-effect waves-light Subir_final red lighten-2 modal-trigger' disabled='true' id='Subir_final' type='submit' style='position Static' href='#modal1' > <i class='material-icons'>file_upload</i></button>"
+        btn = '<a title="Nivel de prioridad Alto" class="btn task-cat red darken-2  btn_p1" id="btn_p1">P1</a>'
+        estado = '<div class="mdl-card__supporting-text"><div class="mdl-stepper-horizontal-alternative"><div class="mdl-stepper-step active-step step-done"><div class="mdl-stepper-circle"></div><div class="mdl-stepper-title">Borrador</div><div class="mdl-stepper-bar-left"></div><div class="mdl-stepper-bar-right"></div></div><div class="mdl-stepper-step "><div class="mdl-stepper-circle"><span>2</span></div><div class="mdl-stepper-title">Memo</div><div class="mdl-stepper-bar-left"></div><div class="mdl-stepper-bar-right"></div></div><div class="mdl-stepper-step "><div class="mdl-stepper-circle"><span>3</span></div><div class="mdl-stepper-title">Contrato</div><div class="mdl-stepper-bar-left"></div></div></div></div>'
+        var datosContratos = {};
+        datosContratos.Datos = datos;
+        datosContratos.Btn = btn;
+        datosContratos.Estado = estado;
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Views/Registro_Contratos.aspx/Guardar_btn",
+                data: JSON.stringify({ 'datos': datosContratos }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    // Materialize.toast('Datos insertados correctamente', 4000, 'rounded')
+
+                },
+                error: function (response, xhr) {
+                    Materialize.toast('Error, Los datos no pudieron ser insertados', 4000, 'rounded');
+                    console.log(response);
+                }
+
+            });
+        });
+        setTimeout(function () { callback(); }, 700);
     };
 
     //funcion guardar memo
@@ -159,7 +180,7 @@ $(document).ready(function () {
         datosContratos.Nombre = $("[id*=nom_contra]").val();
         datosContratos.Fech_inicio = fecha_inicio;
         datosContratos.Fech_fin = fecha_final;
-        datosContratos.Esta_Doc = $("[id*=est_contra]").val();        
+        
         $(function () {
             $.ajax({
                 type: "POST",
@@ -186,8 +207,10 @@ $(document).ready(function () {
     function guardar(callback) {
         guardarContratos(function () {
             guardarArchivo(function () {
-                Materialize.toast('Datos insertados correctamente', 4000, 'rounded');
-                limpiar(); 
+                guardarbtn(function () {
+                    Materialize.toast('Datos insertados correctamente', 4000, 'rounded');
+                    //limpiar();
+                });
             });
         });
         setTimeout(function () { callback();}, 1000)
@@ -267,13 +290,16 @@ $(document).ready(function () {
                         ],
                         data: response.d,
                        
-                        columns: [
+                        columns:  [
                             {
-                                defaultContent: '<button  title="Actualizar" class=" btn waves-effect waves-light btn_Actualizar blue lighten-2" type="submit" style="position: static"><i class="material-icons">update</i></button>&nbsp;' +
-                                    '<button  title="Subir Archivo Memo" class=" btn waves-effect waves-light Subir_memo red lighten-2 modal-trigger" type="submit" style="position: static" href="#modal"><i class="material-icons">file_upload</i></button>&nbsp;' +
-                                    '<button  title="Subir Archivo final" class=" btn waves-effect waves-light Subir_final red lighten-2 modal-trigger" type="submit" style="position: static" href="#modal1"><i class="material-icons">file_upload</i></button>&nbsp;'
+                                defaultContent: '<button  title="Actualizar" class=" btn waves-effect waves-light btn_Actualizar blue lighten-2" type="submit" style="position: static"><i class="material-icons">update</i></button>&nbsp;' 
+                                   
+                                
+                            },                           
+                            {
+                                "className": "dt-center",
+                                data: "Datos"
                             },
-
                             {
                                 "className": "dt-center",
                                 data: "Id"
@@ -302,10 +328,72 @@ $(document).ready(function () {
                                 data: "Fech_fin"
                             },
 
-                        ],
+                        ], 
+                     
+                        
                        
-                    });       
-                    
+                    }); 
+
+                    //$(function () {
+                    //    var index = [];
+                    //    var estado = [];
+                    //    var rows = $("#datatable").dataTable().fnGetNodes();
+                    //    for (var i = 0; i < rows.length; i++) {                            
+                    //            index.push($(rows[i]).find("td:eq(1)").html());
+                    //            estado.push($(rows[i]).find("td:eq(4)").html());
+
+                    //            if ((estado[i] == "P1") ) {
+                    //                $("#Subir_memo").hide();
+                    //                $("#Subir_final").hide()
+                    //            } else
+                    //                if ((estado[i] == "P2") ) {
+                    //                    $("#Subir_memo").show();
+                    //                    $("#Subir_final").hide();
+
+                    //                } else {
+                    //                    Materialize.toast('love and sex', 2000);
+                    //                }
+
+                    //            console.log(estado[i]);
+                    //            //console.log("aqui entra el valor: " + (i + 1))
+                    //            console.log(index[i]);                                                     
+                    //    }
+                    //    console.log(estado);
+                    //    console.log(index);
+                        
+                    //});
+                    //tabla.rows().every(function () {
+                        
+                    //    var index;
+                    //    var estado;
+                    //    estado = this.data().Esta_Doc;
+                    //    index = this.data().Id;
+                    //    if ((estado == "P1") && (index == index)) {
+                    //        //tabla.destroy();
+                    //        $(".Subir_memo").attr('disabled', true);
+                    //        $(".Subir_final").attr('disabled', true);
+                    //    }
+                    //    if ((estado == "P2") && (index == index))  {
+                    //        //tabla.destroy();
+                    //        $(".Subir_memo").attr('Enable', true);
+                    //        $(".Subir_final").attr('disable', true);
+                    //    }
+                    //    if ((estado == "P3") && (index == index)) {
+                    //        //tabla.destroy();
+                    //        $(".Subir_memo").attr('disable', true);
+                    //        $(".Subir_final").attr('Enable', true);
+                    //    }
+                    //    console.log(' los resultados son: ' + estado + ' y el codigo es:' + index);
+                        
+                    //}); 
+
+                    //var datos = response.d;
+                    ////console.log(datos);
+                    //if ((datos.Esta_Doc = "P1") && (datos.Id = "1")) {
+                    //    $(".Subir_memo").attr('disabled', true);
+                    //    $(".Subir_final").attr('disabled', true);
+                    //}
+                   
                 },
                 failure: function (response) {
                     Materialize.toast('ERROR, intente nuevamente.', 4000, 'rounded');
@@ -314,7 +402,7 @@ $(document).ready(function () {
                     Materialize.toast('ERROR, intente nuevamente.', 4000, 'rounded');
                 }
              });        
-
+       
     };
 
     //Funcion para llenar los datos en los textbox a Modificar  
@@ -373,7 +461,8 @@ $(document).ready(function () {
         var row = $(this).parent().parent()[0];
         var data = tabla.row($(this).parents("tr")).data();
         $("[id*=id]").val(data.Id);
-        Modificar_datos();        
+        Modificar_datos();   
+       
         $('select').material_select();
 
     });
@@ -434,14 +523,14 @@ $(document).ready(function () {
             return false;
            
         }
-    };
+    };   
     $(document).on("change", '#file', function (e) {
         e.preventDefault();
         tabla.destroy();
         $('.btn_Actualizar').hide();
         $('.Subir_memo').hide();
         $('.Subir_final').hide();
-    }),
+    });
 
     $('#file').on('change', function () {
         solo_pdf(this);     
@@ -456,7 +545,7 @@ $(document).ready(function () {
 
     });
 
-    //subir el archivo del memo
+    ////subir el archivo del memo
     $(document).on("click", '.Subir_memo', function (e) {
         e.preventDefault();
         var data = tabla.row($(this).parents("tr")).data();
@@ -482,7 +571,7 @@ $(document).ready(function () {
     });
 
     //subir el archivo final    
-    $(document).on("click", '.Subir_final', function (e) {
+     $(document).on("click", '.Subir_final', function (e) {
         e.preventDefault();
         var data = tabla.row($(this).parents("tr")).data();
         $("[id*=id]").val(data.Id);

@@ -30,7 +30,7 @@ Public Class Registro_Contratos
                 comando.Parameters.AddWithValue("@tipo_documento", "Contrato")
                 comando.Parameters.AddWithValue("@fech_inicio", datos.Fech_inicio)
                 comando.Parameters.AddWithValue("@fech_final", datos.Fech_fin)
-                comando.Parameters.AddWithValue("@estado_documento", datos.Esta_Doc)
+                comando.Parameters.AddWithValue("@estado_documento", "P1")
 
                 res = comando.ExecuteNonQuery()
             End Using
@@ -60,6 +60,27 @@ Public Class Registro_Contratos
     End Function
 #End Region
 
+#Region "guardar archivo"
+    <WebMethod()>
+    Public Shared Function Guardar_btn(datos As PropiedadesContratoConvenio) As String
+        Dim query As New Conexion
+        Dim insertString As String
+        Dim codigo As New VARIABLES
+        codigo.cod_inst_1 = CInt(query.ObtenerCodigo("CONVENIOS_CONTRATOS", "cod_cenv_tra"))
+        Try
+            insertString = "insert into BOTONES([cod_cenv_tra],[etiqueta],[btn],[estado]) values(@id,@etiqueta,@btn,@estado)"
+            Dim param As SqlParameter() = New SqlParameter(3) {}
+            param(0) = New SqlParameter("@id", codigo.cod_inst_1)
+            param(1) = New SqlParameter("@etiqueta", datos.Datos)
+            param(2) = New SqlParameter("@btn", datos.Btn)
+            param(3) = New SqlParameter("@estado", datos.Estado)
+            Return query.insertar(insertString, param)
+        Catch ex As Exception
+            Return ex.Message
+        End Try
+    End Function
+#End Region
+
 #Region "actualizar"
     <WebMethod()>
     Public Shared Function Actualizar_Contrato(datos As PropiedadesContratoConvenio) As String
@@ -69,14 +90,17 @@ Public Class Registro_Contratos
         Try
             Using conexion As SqlConnection = New SqlConnection(cadena)
                 conexion.Open()
-                insertString = "Update CONVENIOS_CONTRATOS set nombre_documento=@nombre_documento,fech_inicio=@fech_inicio,estado_documento=@estado_documento,fech_final=@fech_final" &
-                    " where cod_cenv_tra=@id "
+                insertString = "begin tran " &
+                    "Update CONVENIOS_CONTRATOS set nombre_documento=@nombre_documento,fech_inicio=@fech_inicio,fech_final=@fech_final" &
+                    " where cod_cenv_tra=@id; " &
+                    "commit tran"
                 Dim comando As SqlCommand = New SqlCommand(insertString, conexion)
                 comando.Parameters.AddWithValue("@id", datos.Id)
                 comando.Parameters.AddWithValue("@nombre_documento", datos.Nombre)
                 comando.Parameters.AddWithValue("@fech_inicio", datos.Fech_inicio)
                 comando.Parameters.AddWithValue("@fech_final", datos.Fech_fin)
-                comando.Parameters.AddWithValue("@estado_documento", datos.Esta_Doc)
+                'comando.Parameters.AddWithValue("@estado_documento", "P1")
+                'comando.Parameters.AddWithValue("@Btn", datos.Btn)
 
                 res = comando.ExecuteNonQuery()
             End Using
@@ -135,7 +159,8 @@ Public Class Registro_Contratos
     <Services.WebMethod()>
     <ScriptMethod()>
     Public Shared Function seleccionar() As PropiedadesContratoConvenio()
-        Dim sql = "SELECT [cod_cenv_tra],[nombre_documento],[tipo_documento],[registro_borrador],[registro_memo],[registro_inal],[estado_documento],[fech_inicio],[fech_final]  FROM [dbo].[CONVENIOS_CONTRATOS] where [tipo_documento]='Contrato'"
+        Dim sql = "  SELECT [etiqueta],CONVENIOS_CONTRATOS.[cod_cenv_tra],[nombre_documento],[tipo_documento],[registro_borrador],[registro_memo],[registro_inal],[estado_documento],[fech_inicio],[fech_final]" &
+            "FROM CONVENIOS_CONTRATOS inner join BOTONES on (CONVENIOS_CONTRATOS.cod_cenv_tra = BOTONES.cod_cenv_tra)  where [tipo_documento]='Contrato' "
 
         Dim filas As List(Of PropiedadesContratoConvenio) = New List(Of PropiedadesContratoConvenio)
         Using con As New SqlConnection(cadena)
@@ -144,6 +169,7 @@ Public Class Registro_Contratos
             Using rdr As SqlDataReader = cmd.ExecuteReader()
                 While rdr.Read()
                     Dim fila As New PropiedadesContratoConvenio()
+                    fila.Datos = rdr.Item("etiqueta").ToString()
                     fila.Id = rdr.Item("cod_cenv_tra").ToString()
                     fila.Nombre = rdr.Item("nombre_documento").ToString()
                     fila.Tip_Doc = rdr.Item("tipo_documento").ToString()

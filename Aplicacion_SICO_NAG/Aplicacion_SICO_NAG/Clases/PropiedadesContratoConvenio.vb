@@ -11,5 +11,6 @@
     Public Property Regis_final() As String
     Public Property Estado() As String
     Public Property Datos() As String
+    Public Property Btn() As String
 
 End Class
